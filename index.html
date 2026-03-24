@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maa Nanda coaching classes</title>
+<title>Oxford coaching classes</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:linear-gradient(135deg,#0b1320,#020617);color:white;overflow-x:hidden;}
-/* BUBBLES BACKGROUND */
+{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body {
+  background: linear-gradient(135deg, #0b1320, #020617);
+  color: white;
+  overflow-x: hidden;
+}/* BUBBLES BACKGROUND */
 .bubbles{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-1;overflow:hidden;}
 .bubbles span{position:absolute;bottom:-100px;width:25px;height:25px;background:rgba(255,221,0,0.35);border-radius:50%;animation:rise 18s linear infinite;}
 @keyframes rise{0%{transform:translateY(0) scale(.4);opacity:.6;}100%{transform:translateY(-1200px) scale(1);opacity:0;}}
@@ -231,41 +234,173 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
 .modal-content{background:#020617;padding:30px;max-width:420px;margin:10% auto;border-radius:12px;text-align:center;border:1px solid rgba(255,255,255,0.1);}
 .close{float:right;cursor:pointer;font-size:22px;}
 .price{font-size:26px;color:#ffd900;font-weight:bold;}
-</style>
+/* HEADER */
+.top-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#0f172a;    /* Dark blue background */
+  color:#ffd900;          /* Yellow/gold text for contrast */
+  padding:12px 15px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.15); /* subtle shadow */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo-section{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-section img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+}
+
+.logo-section h1{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.menu{
+  font-size:24px;
+  color:white;
+}
+
+/* WELCOME BAR */
+.welcome-bar{
+  width:100%;
+  text-align:center;
+  padding:10px;
+  font-size:20px;
+  color:white;
+  background:linear-gradient(90deg,#ffd900,#ffb700);
+}
+
+/* NEWS BAR */
+.news-bar{
+  width:100%;
+  overflow:hidden;
+  background:#0f172a;
+  color:white;
+  white-space:nowrap;
+  position: relative;
+  height: 40px; /* fixed height for ticker */
+}
+
+.news-track{
+  display:inline-block;
+  padding:10px 0;
+  font-weight:bold;
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* SCROLL */
+@keyframes scrollNews{
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
+}
+  /* Director Name Style */
+.director-name{
+  font-size:12px;
+  color:#00ffd5;
+  margin-top:2px;
+  letter-spacing:1px;
+  font-weight:bold;
+}
+
+/* Optional Glow Effect */
+.director-name{
+  text-shadow:0 0 5px #00ffd5, 0 0 10px rgba(0,255,213,0.5);
+}
+  .menu {
+  font-size: 24px;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none; /* hidden by default */
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  z-index: 10;
+  min-width: 180px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background: #ffd900;
+  color: black;
+}
+ </style>
 </head>
 <body>
 
 <div class="bubbles">
 <span style="left:10%"></span><span style="left:30%"></span><span style="left:50%"></span><span style="left:70%"></span><span style="left:90%"></span>
 </div>
-
-<header class="premium-header">
-  <h1 class="glow-text">MAA NANDA COACHING CLASSES</h1>
-  <p class="tagline">✨ Shape Your Future With Excellence ✨</p>
-  <div class="director">
-  <span>🎓 Director</span> Ankit Joshi
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="logo-section">
+    <img src="https://via.placeholder.com/50" alt="logo">
+    <div>
+      <h1>OXFORD TUTORIALS</h1>
+      <div class="director-name">🎓 Director: Mraj Gupta</div>
+    </div>
+  </div>
+  <div class="menu" onclick="toggleMenu()">⋮
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#teachers">Teachers</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#donation">Donation</a>
+    <a href="#register">Register</a>
+    <a href="#contact">Contact</a>
+  </div>
 </div>
-</header>
-<nav>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#courses">Courses</a>
-<a href="#teachers">Teachers</a>
-<a href="#gallery">Gallery</a>
-<a href="#donation">Donation</a>
-<a href="#register">Register</a>
-<a href="#contact">Contact</a>
-</nav>
+</div>
+
+
+<!-- NEWS SLIDER -->
+<!-- NEWS SLIDER -->
+<div class="news-bar">
+  <div class="news-track">
+    📚 Study Material Available: Class 1 • Class 2 • Class 3 • Class 4 • Class 5 • 
+    Class 6 • Class 7 • Class 8 • Class 9 • Class 10 • Class 11 Commerce • 
+    Class 11 Science • Class 11 Arts • Class 12 Commerce • Class 12 Science • 
+    Class 12 Arts • B.Com • Recommended by Faculties • Call Now: 9973443289 •
+  </div>
+</div>
+
 
 <section class="hero">
-<h1>MAA NANDA COACHING CLASSES</h1>
+<h1>Oxford Tutorials</h1>
 <p>📘 Learn • Grow • Succeed</p>
 </section>
 
 <section class="section" id="about">
-<h2>About MAA NANDA COACHING CLASSES</h2>
+<h2>About OXFORD COACHING CLASSES</h2>
 <p style="text-align:center">
-At MAA NANDA COACHING CLASSES, we focus on delivering high-quality coaching for all classes with experienced teachers, 
+At OXFORD COACHING CLASSES, we focus on delivering high-quality coaching for all classes with experienced teachers, 
 structured learning, and regular tests. We help students strengthen their basics and prepare for school exams 
 as well as competitive opportunities.
 </p>
@@ -333,7 +468,7 @@ as well as competitive opportunities.
 
 <div class="card teacher">
 <img src="teacher.jpg">
-<h3>Ankit Joshi</h3>
+<h3>Mraj Gupta</h3>
 <p>Director</p>
 </div>
 
@@ -409,9 +544,10 @@ as well as competitive opportunities.
 <section class="section" id="contact">
 <h2>Contact Us</h2>
 <p style="text-align:center">
-📍 Near Chota Gurudwara, Awas-Vikas, Rudrpur, Uttarakhand, pin-263153 <br><br>
-📞 07505400658  <br><br>
-📧 joshijiratgal1234@gmail.com
+📍 Oxford Tutorials 
+Dumka Road, Guriamore, Bounsi Dist. BANKA ( Bihar) - 813104<br><br>
+📞 9973443289  <br><br>
+📧 mrajgupta2022@gmail.com
 </p>
 <br>
 <iframe 
@@ -425,10 +561,10 @@ as well as competitive opportunities.
 </section>
 
 <footer>
-<p>© 2024 Maa Nanda coaching classes</p>
+<p>© 2024 OXFORD COACHING CLASSES</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/917505400658" target="_blank">WhatsApp</a>
+<a class="whatsapp" href="https://wa.me/919973443289" target="_blank">WhatsApp</a>
 
 <div id="courseModal" class="modal">
 <div class="modal-content">
@@ -487,6 +623,46 @@ document.querySelectorAll("#register form")[0].reset();
 alert("❌ Error: " + error.message);
 });
 }
+  
+const track = document.querySelector('.news-track');
+const barWidth = document.querySelector('.news-bar').offsetWidth;
+let scrollPos = barWidth; // start from right
+const speed = 1; // pixels per frame
+const pauseDuration = 2000; // pause in ms
+
+function animateTicker(){
+  scrollPos -= speed;
+  if(scrollPos + track.offsetWidth < 0){
+    // reset and pause
+    scrollPos = barWidth;
+    setTimeout(animateTicker, pauseDuration);
+    return;
+  }
+  track.style.transform = `translateX(${scrollPos}px)`;
+  requestAnimationFrame(animateTicker);
+}
+
+// start animation
+animateTicker();
+
+function toggleMenu() {
+  let menu = document.getElementById("dropdownMenu");
+  if(menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+
+// Optional: close menu if clicked outside
+window.addEventListener('click', function(e){
+  let menu = document.querySelector('.menu');
+  let dropdown = document.getElementById('dropdownMenu');
+  if(!menu.contains(e.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
 function sendCoachingForm(){
 
 alert("Submitting... ⏳");
