@@ -225,12 +225,37 @@ aboutText.value=d.about||"";
 adminNews.value=d.news||"";
 });
 }
+window.updateDirector = function(){
+  const value = document.getElementById("directorName").value;
 
+  update(ref(db,"settings"),{director:value})
+  .then(()=> alert("Director Updated ✅"))
+  .catch(err=> alert("Error ❌ "+err.message));
+}
+
+window.updateAbout = function(){
+  const value = document.getElementById("aboutText").value;
+
+  update(ref(db,"settings"),{about:value})
+  .then(()=> alert("About Updated ✅"))
+  .catch(err=> alert("Error ❌ "+err.message));
+}
+
+window.updateNews = function(){
+  const value = document.getElementById("adminNews").value;
+
+  update(ref(db,"settings"),{news:value})
+  .then(()=> alert("News Updated ✅"))
+  .catch(err=> alert("Error ❌ "+err.message));
+}
+
+window.deleteNews = function(){
+  remove(ref(db,"settings/news"))
+  .then(()=> alert("News Deleted ✅"))
+  .catch(err=> alert("Error ❌ "+err.message));
+  }
 // SETTINGS UPDATE
-window.updateDirector=()=>update(ref(db,"settings"),{director:directorName.value});
-window.updateAbout=()=>update(ref(db,"settings"),{about:aboutText.value});
-window.updateNews=()=>update(ref(db,"settings"),{news:adminNews.value});
-window.deleteNews=()=>remove(ref(db,"settings/news"));
+
 
 </script>
 
