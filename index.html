@@ -595,8 +595,10 @@ const db=firebase.database();
 const storage=firebase.storage();
 // 🔥 LIVE NEWS UPDATE FROM FIREBASE
 firebase.database().ref("settings/news").on("value", snap => {
-  if(snap.exists()){
+  if(snap.exists() && snap.val().trim() !== ""){
     document.getElementById("newsText").innerText = snap.val();
+  } else {
+    document.getElementById("newsText").innerText = "";
   }
 });
 
