@@ -414,53 +414,174 @@ Our teaching methodology is concept-driven, exam-oriented, and student-centric. 
 <div class="card"><h3>Affordable Fees</h3><p>Quality education at very low cost</p></div>
 <div class="card"><h3>Certificates</h3><p>Course completion certificate provided</p></div>
 </div>
-</section>  <section class="section" id="courses">  
-<h2>Our Courses</h2>  <div class="grid">  <div class="card">  
-<h3>Junior Class 11-12 Arts competition </h3>  
-<p>Students : <span class="count">120</span></p>  
-<button onclick="openCourse('Junior Class 1-5','Government School Students','₹249/month')">View</button>  
-</div>  <div class="card">  
-<h3>Junior Class 1-5 </h3>  
-<p>Students : <span class="count">95</span></p>  
-<button onclick="openCourse('Junior Class 1-5','Bahadurpur Branch','₹499/month')">View</button>  
-</div>  <div class="card">  
-<h3>Class 6-7 </h3>  
-<p>Students : <span class="count">80</span></p>  
-<button onclick="openCourse('Class 6-7 CBSE','All Subjects','₹599/month')">View</button>  
-</div>  <div class="card">  
-<h3>Class 8-9 </h3>  
-<p>Students : <span class="count">75</span></p>  
-<button onclick="openCourse('Class 8-9 CBSE','All Subjects','₹699/month')">View</button>  
-</div>  <div class="card">  
-<h3>Class 10th Board</h3>  
-<p>Students : <span class="count">110</span></p>  
-<button onclick="openCourse('Class 10th','Board Preparation','₹499/month')">View</button>  
-</div>  <div class="card">  
-<h3>Class 11-12 Science</h3>  
-<p>Students : <span class="count">60</span></p>  
-<button onclick="openCourse('Class 11-12 Science','All Subjects','₹1499/month')">View</button>  
-</div>  <div class="card">  
-<h3>IIT / NEET Foundation</h3>  
-<p>Students : <span class="count">45</span></p>  
-<button onclick="openCourse('IIT NEET Foundation','Entrance Preparation','₹499/month')">View</button>  
-</div>  <div class="card">  
-<h3>Computer Course</h3>  
-<p>Students : <span class="count">140</span></p>  
-<button onclick="openCourse('Computer Course','Professional Computer Training','₹799/month')">View</button>  
-</div>  <div class="card">  
-<h3>Polytechnic / ITI / Paramedical</h3>  
-<p>Students : <span class="count">35</span></p>  
-<button onclick="openCourse('Polytechnic ITI','Entrance Preparation','₹499/month')">View</button>  
-</div>  <div class="card">  
-<h3>Class 12 English (Girls)</h3>  
-<p>Students : <span class="count">30</span></p>  
-<button onclick="openCourse('Class 12 English','Girls Free Batch','FREE')">View</button>  
-</div>  <div class="card">  
-<h3>Class 10 Maths (Girls)</h3>  
-<p>Students : <span class="count">28</span></p>  
-<button onclick="openCourse('Class 10 Maths','Girls Free Batch','FREE')">View</button>  
-</div>  </div>  
-</section> 
+<section class="section" id="courses">
+
+<h2 style="text-align:center;color:#ffd900;">Our Courses</h2>
+
+<style>
+.section{
+  padding:40px 20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#020617;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 20px rgba(255,221,0,0.4);
+}
+
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+}
+
+.card h3{
+  color:#ffd900;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.price{
+  font-weight:bold;
+  color:#00ffcc;
+}
+
+button{
+  width:100%;
+  padding:8px;
+  background:#ffd900;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+
+<div class="grid">
+
+<!-- CLASS 6-7 -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Class+6-7">
+<div class="card-content">
+<h3>Class 6-7</h3>
+<p>All Subjects Coaching</p>
+<p class="price">₹799 / Month</p>
+<button onclick="openCourse('Class 6-7','All Subjects','₹799/month')">View</button>
+</div>
+</div>
+
+<!-- CLASS 8-9 -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Class+8-9">
+<div class="card-content">
+<h3>Class 8-9</h3>
+<p>CBSE / ICSE Preparation</p>
+<p class="price">₹999 / Month</p>
+<button onclick="openCourse('Class 8-9','All Subjects','₹999/month')">View</button>
+</div>
+</div>
+
+<!-- CLASS 10 CBSE -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Class+10+Board">
+<div class="card-content">
+<h3>Class 10 (CBSE/ICSE)</h3>
+<p>Board Preparation</p>
+<p class="price">₹1199 / Month</p>
+<button onclick="openCourse('Class 10','CBSE ICSE','₹1199/month')">View</button>
+</div>
+</div>
+
+<!-- CLASS 10 BIHAR -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Class+10+Bihar">
+<div class="card-content">
+<h3>Class 10 (Bihar Board)</h3>
+<p>Board Preparation</p>
+<p class="price">₹999 / Month</p>
+<button onclick="openCourse('Class 10 Bihar','Board Prep','₹999/month')">View</button>
+</div>
+</div>
+
+<!-- 11-12 SCIENCE -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Science">
+<div class="card-content">
+<h3>Class 11-12 Science</h3>
+<p>All Subjects + Concept Clarity</p>
+<p class="price">₹1499 / Month</p>
+<button onclick="openCourse('Class 11-12 Science','All Subjects','₹1499/month')">View</button>
+</div>
+</div>
+
+<!-- IIT NEET -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=IIT+NEET">
+<div class="card-content">
+<h3>IIT / NEET Foundation</h3>
+<p>Entrance Preparation</p>
+<p class="price">₹499 / Month</p>
+<button onclick="openCourse('IIT NEET','Foundation','₹499/month')">View</button>
+</div>
+</div>
+
+<!-- COMPUTER -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Computer">
+<div class="card-content">
+<h3>Computer Course</h3>
+<p>Basic to Advanced Training</p>
+<p class="price">₹799 / Month</p>
+<button onclick="openCourse('Computer','Training','₹799/month')">View</button>
+</div>
+</div>
+
+<!-- POLYTECHNIC -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Polytechnic">
+<div class="card-content">
+<h3>Polytechnic / ITI / Paramedical</h3>
+<p>Entrance Preparation</p>
+<p class="price">₹1999 (One Time)</p>
+<button onclick="openCourse('Polytechnic','Entrance','₹1999 One Time')">View</button>
+</div>
+</div>
+
+<!-- GIRLS FREE -->
+<div class="card">
+<img src="https://via.placeholder.com/400x200?text=Girls+Batch">
+<div class="card-content">
+<h3>Girls Special Batch</h3>
+<p>Class 10 Maths & 12 English</p>
+<p class="price">FREE</p>
+<button onclick="openCourse('Girls Batch','Free Course','FREE')">View</button>
+</div>
+</div>
+
+</div>
+
+</section>
 
 <section class="section" id="teachers">
 <h2>Our Teachers</h2>
