@@ -803,10 +803,30 @@ firebase.database().ref("settings/news").on("value", snap => {
 });
 
 // Course Modal
-function openCourse(title,desc,price){document.getElementById("courseTitle").innerText=title;document.getElementById("courseDesc").innerText=desc;document.getElementById("coursePrice").innerText=price;document.getElementById("courseModal").style.display="block";}
-function closeModal(){document.getElementById("courseModal").style.display="none";}
+// Course Modal (CENTER FIXED)
+function openCourse(title, desc, price) {
+  const modal = document.getElementById("courseModal");
 
-// Submit Forms
+  document.getElementById("courseTitle").innerText = title;
+  document.getElementById("courseDesc").innerText = desc;
+  document.getElementById("coursePrice").innerText = price;
+
+  // 👇 FORCE CENTER DISPLAY
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("courseModal").style.display = "none";
+}
+
+// 👇 CLICK OUTSIDE TO CLOSE (Premium Feature)
+window.onclick = function(event) {
+  let modal = document.getElementById("courseModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+  // Submit Forms
 function sendComputerForm(){
 
 alert("Submitting... ⏳");
