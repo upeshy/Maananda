@@ -231,20 +231,26 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
 }
 /* MODAL */
 /* MODAL BACKGROUND */
+/* MODAL BACKGROUND */
 .modal{
-  display:none;
+  display:none; /* 👈 IMPORTANT (initial hidden) */
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.75);
-
-  display:flex;
   justify-content:center;
   align-items:center;
+  z-index:999;
 }
 
+/* ACTIVE STATE (JS se enable hoga) */
+.modal.active{
+  display:flex;
+}
+
+/* MODAL BOX */
 .modal-content{
   background:#020617;
   padding:30px;
@@ -252,8 +258,9 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   max-width:400px;
   border-radius:12px;
   text-align:center;
-  margin:0;
-                  }
+  position:relative;
+  animation:popup 0.3s ease;
+}
 
 /* ANIMATION */
 @keyframes popup{
@@ -274,6 +281,7 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   right:15px;
   cursor:pointer;
   font-size:22px;
+  color:white;
 }
 .price{font-size:26px;color:#ffd900;font-weight:bold;}
 /* HEADER */
@@ -803,19 +811,18 @@ function openCourse(title, desc, price) {
   document.getElementById("courseDesc").innerText = desc;
   document.getElementById("coursePrice").innerText = price;
 
-  // 👇 FORCE CENTER DISPLAY
-  modal.style.display = "flex";
+  modal.classList.add("active"); // 👈 ye change hai
 }
 
 function closeModal() {
-  document.getElementById("courseModal").style.display = "none";
+  document.getElementById("courseModal").classList.remove("active");
 }
 
-// 👇 CLICK OUTSIDE TO CLOSE (Premium Feature)
+// outside click close
 window.onclick = function(event) {
   let modal = document.getElementById("courseModal");
   if (event.target === modal) {
-    modal.style.display = "none";
+    modal.classList.remove("active");
   }
 };
   // Submit Forms
