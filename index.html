@@ -233,7 +233,7 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
 /* MODAL BACKGROUND */
 /* MODAL BACKGROUND */
 .modal{
-  display:none; /* 👈 IMPORTANT (initial hidden) */
+  display:none;
   position:fixed;
   top:0;
   left:0;
@@ -245,12 +245,10 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   z-index:999;
 }
 
-/* ACTIVE STATE (JS se enable hoga) */
 .modal.active{
   display:flex;
 }
 
-/* MODAL BOX */
 .modal-content{
   background:#020617;
   padding:30px;
@@ -259,7 +257,7 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   border-radius:12px;
   text-align:center;
   position:relative;
-  animation:popup 0.3s ease;
+  margin:auto;
 }
 
 /* ANIMATION */
