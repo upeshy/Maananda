@@ -393,23 +393,23 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   background: #ffd900;
   color: black;
 }
-  /* COURSES SECTION */
+/* ===== COURSES SECTION ===== */
 #courses{
   padding:80px 20px;
 }
 
-/* GRID */
+/* GRID LAYOUT */
 #courses .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:25px;
 }
 
-/* CARD */
+/* CARD DESIGN */
 #courses .card{
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  border-radius:15px;
+  backdrop-filter:blur(12px);
+  border-radius:18px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.1);
   transition:0.4s;
@@ -419,8 +419,9 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
 /* HOVER EFFECT */
 #courses .card:hover{
   transform:translateY(-10px) scale(1.02);
-  box-shadow:0 10px 40px rgba(0,0,0,0.6),
-             0 0 20px rgba(255,221,0,0.3);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6),
+    0 0 20px rgba(255,221,0,0.3);
 }
 
 /* IMAGE */
@@ -430,20 +431,20 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   object-fit:cover;
 }
 
-/* CONTENT */
+/* CONTENT AREA */
 #courses .card-content{
-  padding:18px;
+  padding:20px;
   text-align:center;
 }
 
 /* TITLE */
 #courses .card h3{
   color:#ffd900;
-  margin-bottom:8px;
   font-size:20px;
+  margin-bottom:6px;
 }
 
-/* TEXT */
+/* DESCRIPTION */
 #courses .card p{
   font-size:14px;
   opacity:0.85;
@@ -454,14 +455,14 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   font-size:20px;
   font-weight:bold;
   color:#00ffd5;
-  margin:10px 0;
+  margin:12px 0;
 }
 
 /* BUTTON */
 #courses button{
-  padding:10px 18px;
+  padding:10px 20px;
   border:none;
-  border-radius:25px;
+  border-radius:30px;
   background:linear-gradient(45deg,#ffd900,#ffb700);
   color:black;
   font-weight:bold;
@@ -469,17 +470,30 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   transition:0.3s;
 }
 
+/* BUTTON HOVER */
 #courses button:hover{
   transform:scale(1.08);
   box-shadow:0 0 15px #ffd900;
 }
 
-/* MOBILE */
+/* MOBILE OPTIMIZATION */
 @media(max-width:768px){
+  #courses{
+    padding:60px 15px;
+  }
+
   #courses .card img{
     height:150px;
   }
+
+  #courses .card h3{
+    font-size:18px;
   }
+
+  #courses .price{
+    font-size:18px;
+  }
+}
  </style>
 </head>
 <body>
