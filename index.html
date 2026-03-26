@@ -383,12 +383,9 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
 <!-- NEWS SLIDER -->
 <!-- NEWS SLIDER -->
 <div class="news-bar">
-  <div class="news-track">
-    📚 Study Material Available: Class 1 • Class 2 • Class 3 • Class 4 • Class 5 • 
-    Class 6 • Class 7 • Class 8 • Class 9 • Class 10 • Class 11 Commerce • 
-    Class 11 Science • Class 11 Arts • Class 12 Commerce • Class 12 Science • 
-    Class 12 Arts • B.Com • Recommended by Faculties • Call Now: 9973443289 •
-  </div>
+  <div class="news-track" id="newsText">
+  Loading updates...
+</div>
 </div>
 
 
@@ -596,6 +593,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db=firebase.database();
 const storage=firebase.storage();
+// 🔥 LIVE NEWS UPDATE FROM FIREBASE
+firebase.database().ref("settings/news").on("value", snap => {
+  if(snap.exists()){
+    document.getElementById("newsText").innerText = snap.val();
+  }
+});
 
 // Course Modal
 function openCourse(title,desc,price){document.getElementById("courseTitle").innerText=title;document.getElementById("courseDesc").innerText=desc;document.getElementById("coursePrice").innerText=price;document.getElementById("courseModal").style.display="block";}
