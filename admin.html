@@ -80,8 +80,8 @@ img{border-radius:4px;}
   <label>About Text</label>
   <textarea id="aboutText"></textarea>
 
-  <label>Welcome Text</label>
-  <textarea id="welcomeText"></textarea>
+  <input type="text" id="adminNews" placeholder="Enter News Update">
+<button onclick="updateNews()">Update News</button>
 
   
 
@@ -147,7 +147,15 @@ window.loginAdmin = function(){
       alert("Login Failed ❌\n"+err.message);
     });
 }
+function updateNews(){
+  let news = document.getElementById("adminNews").value;
 
+  firebase.database().ref("settings").update({
+    news: news
+  }).then(()=>{
+    alert("News Updated ✅");
+  });
+  }
 // --- LOAD STUDENTS ---
 window.loadRecords = function(){
   currentCategory = document.getElementById('categorySelect').value;
