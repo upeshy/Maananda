@@ -112,11 +112,14 @@ import { getDatabase, ref, onValue, update, remove, get, child } from "https://w
 
 // Firebase
 const firebaseConfig = {
-apiKey: "AIzaSy...",
+apiKey: "AIzaSyD9bD9ijZK6WUkE7A9GyyiSnjLUozNXz7U",
 authDomain: "raghav-d9e01.firebaseapp.com",
-databaseURL: "https://raghav-d9e01-default-rtdb.firebaseio.com"
+databaseURL: "https://raghav-d9e01-default-rtdb.firebaseio.com",
+projectId: "raghav-d9e01",
+storageBucket: "raghav-d9e01.firebasestorage.app",
+messagingSenderId: "902935133374",
+appId: "1:902935133374:web:5b27fbc0bfd8506b7f32ef"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
