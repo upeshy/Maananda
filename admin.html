@@ -76,12 +76,11 @@ input,select,textarea{padding:6px;margin:4px 0;border-radius:4px;border:none;bac
 <textarea id="aboutText"></textarea>
 <button onclick="updateAbout()">Update About</button>
 
-<label>News</label>
+<label>Admin News (Website)</label>
 <input id="adminNews">
-<button onclick="updateNews()">Update News</button>
-<button onclick="deleteNews()">Delete News</button>
+<button onclick="updateAdminNews()">Update Admin News</button>
 
- <label>News Text</label>
+<label>Popup News</label>
 <textarea id="newsText"></textarea>
 
 <label>Show Popup</label>
@@ -89,6 +88,9 @@ input,select,textarea{padding:6px;margin:4px 0;border-radius:4px;border:none;bac
   <option value="true">Show</option>
   <option value="false">Hide</option>
 </select>
+
+<button onclick="updateNews()">Update Popup News</button>
+<button onclick="deleteNews()">Delete Popup News</button>
 
 </div>
 
@@ -231,17 +233,20 @@ function loadSettings(){
   onValue(ref(db,"settings"), (snap)=>{
     let d = snap.val() || {};
 
-    // Basic fields
-    document.getElementById("directorName").value = d.director || "";
-    document.getElementById("aboutText").value = d.about || "";
+    // Basic
+    directorName.value = d.director || "";
+    aboutText.value = d.about || "";
 
-    // 🔥 News Popup
+    // ✅ Admin News (simple)
+    adminNews.value = d.adminNews || "";
+
+    // ✅ Popup News
     if(d.news){
-      document.getElementById("newsText").value = d.news.text || "";
-      document.getElementById("newsShow").value = d.news.show ? "true" : "false";
+      newsText.value = d.news.text || "";
+      newsShow.value = d.news.show ? "true" : "false";
     } else {
-      document.getElementById("newsText").value = "";
-      document.getElementById("newsShow").value = "false";
+      newsText.value = "";
+      newsShow.value = "false";
     }
   });
 }
@@ -277,9 +282,16 @@ window.updateNews = function(){
   };
 
   update(ref(db,"settings"), updatedData)
-  .then(()=> alert("News Updated ✅"))
+  .then(()=> alert("Popup News Updated ✅"))
   .catch(err=> alert("Error ❌ " + err.message));
 }
+ window.updateAdminNews = function(){
+  const value = document.getElementById("adminNews").value;
+
+  update(ref(db,"settings"), { adminNews: value })
+  .then(()=> alert("Admin News Updated ✅"))
+  .catch(err=> alert("Error ❌ " + err.message));
+ }
 
 
 // ✅ Delete News
