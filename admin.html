@@ -81,6 +81,15 @@ input,select,textarea{padding:6px;margin:4px 0;border-radius:4px;border:none;bac
 <button onclick="updateNews()">Update News</button>
 <button onclick="deleteNews()">Delete News</button>
 
+ <label>News Text</label>
+<textarea id="newsText"></textarea>
+
+<label>Show Popup</label>
+<select id="newsShow">
+  <option value="true">Show</option>
+  <option value="false">Hide</option>
+</select>
+
 </div>
 
 </div>
@@ -217,44 +226,72 @@ alert("Updated ✅");
 }
 
 // SETTINGS LOAD
+// 🔥 Load Settings
 function loadSettings(){
-onValue(ref(db,"settings"),(snap)=>{
-let d=snap.val()||{};
-directorName.value=d.director||"";
-aboutText.value=d.about||"";
-adminNews.value=d.news||"";
-});
+  onValue(ref(db,"settings"), (snap)=>{
+    let d = snap.val() || {};
+
+    // Basic fields
+    document.getElementById("directorName").value = d.director || "";
+    document.getElementById("aboutText").value = d.about || "";
+
+    // 🔥 News Popup
+    if(d.news){
+      document.getElementById("newsText").value = d.news.text || "";
+      document.getElementById("newsShow").value = d.news.show ? "true" : "false";
+    } else {
+      document.getElementById("newsText").value = "";
+      document.getElementById("newsShow").value = "false";
+    }
+  });
 }
+
+
+// ✅ Update Director
 window.updateDirector = function(){
   const value = document.getElementById("directorName").value;
 
-  update(ref(db,"settings"),{director:value})
+  update(ref(db,"settings"), { director: value })
   .then(()=> alert("Director Updated ✅"))
-  .catch(err=> alert("Error ❌ "+err.message));
+  .catch(err=> alert("Error ❌ " + err.message));
 }
 
+
+// ✅ Update About
 window.updateAbout = function(){
   const value = document.getElementById("aboutText").value;
 
-  update(ref(db,"settings"),{about:value})
+  update(ref(db,"settings"), { about: value })
   .then(()=> alert("About Updated ✅"))
-  .catch(err=> alert("Error ❌ "+err.message));
+  .catch(err=> alert("Error ❌ " + err.message));
 }
 
+
+// ✅ Update News (Text + Show)
 window.updateNews = function(){
-  const value = document.getElementById("adminNews").value;
+  const updatedData = {
+    news: {
+      text: document.getElementById("newsText").value,
+      show: document.getElementById("newsShow").value === "true"
+    }
+  };
 
-  update(ref(db,"settings"),{news:value})
+  update(ref(db,"settings"), updatedData)
   .then(()=> alert("News Updated ✅"))
-  .catch(err=> alert("Error ❌ "+err.message));
+  .catch(err=> alert("Error ❌ " + err.message));
 }
 
+
+// ✅ Delete News
 window.deleteNews = function(){
   remove(ref(db,"settings/news"))
-  .then(()=> alert("News Deleted ✅"))
-  .catch(err=> alert("Error ❌ "+err.message));
-  }
-// SETTINGS UPDATE
+  .then(()=> {
+    alert("News Deleted ✅");
+    document.getElementById("newsText").value = "";
+    document.getElementById("newsShow").value = "false";
+  })
+  .catch(err=> alert("Error ❌ " + err.message));
+}
 
 
 </script>
