@@ -550,7 +550,14 @@ We are a dedicated coaching centre for Class 8–12, NEET, JEE, and Foundation p
 Our teaching methodology is concept-driven, exam-oriented, and student-centric. Instead of rote learning, we emphasize deep understanding, logical thinking, and consistent practice. Each student receives individual attention through small batch sizes, ensuring personalized support and faster progress.
 </p>
 </section>
-
+<!-- NEWS POPUP -->
+<div id="newsPopup" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeNews()">✖</span>
+    <h2>📢 Latest News</h2>
+    <p id="newsText">Loading...</p>
+  </div>
+</div>
 <section class="section">
 <h2>Why Choose Us</h2>
 <div class="grid">
@@ -939,6 +946,26 @@ document.querySelectorAll("#register form")[1].reset();
 alert("❌ Error: " + error.message);
 });
 }
+function closeNews(){
+  document.getElementById("newsPopup").style.display="none";
+}
+
+// Firebase se News fetch
+firebase.database().ref("settings/news").on("value", snap => {
+  if(snap.exists()){
+    let news = snap.val();
+
+    if(news.text){
+      document.getElementById("newsText").innerText = news.text;
+
+      // Show popup only if enabled
+      if(news.show === true){
+        document.getElementById("newsPopup").style.display = "block";
+      }
+    }
+  }
+});
+
 
 // Student Counters Animation
 let counters = document.querySelectorAll('.count');
