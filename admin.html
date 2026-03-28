@@ -89,13 +89,12 @@ input,select,textarea{padding:6px;margin:4px 0;border-radius:4px;border:none;bac
   <option value="false">Hide</option>
 </select>
 
-<button onclick="updateNews()">Update Popup News</button>
-<button onclick="deleteNews()">Delete Popup News</button>
-
+<button onclick="updatePopupNews()">Update Popup News</button>
+<button onclick="deletePopupNews()">Delete Popup News</button>
 </div>
 
 </div>
-</div>
+
 
 <!-- EDIT MODAL -->
 <div class="modal" id="editModal">
@@ -228,6 +227,7 @@ alert("Updated ✅");
 }
 
 // SETTINGS LOAD
+
 // 🔥 Load Settings
 function loadSettings(){
   onValue(ref(db,"settings"), (snap)=>{
@@ -237,7 +237,7 @@ function loadSettings(){
     directorName.value = d.director || "";
     aboutText.value = d.about || "";
 
-    // ✅ Admin News (simple)
+    // ✅ Admin News
     adminNews.value = d.adminNews || "";
 
     // ✅ Popup News
@@ -252,55 +252,38 @@ function loadSettings(){
 }
 
 
-// ✅ Update Director
-window.updateDirector = function(){
-  const value = document.getElementById("directorName").value;
+// ✅ Admin News Update
+window.updateAdminNews = function(){
+  const value = document.getElementById("adminNews").value;
 
-  update(ref(db,"settings"), { director: value })
-  .then(()=> alert("Director Updated ✅"))
+  update(ref(db,"settings"), { adminNews: value })
+  .then(()=> alert("Admin News Updated ✅"))
   .catch(err=> alert("Error ❌ " + err.message));
 }
 
 
-// ✅ Update About
-window.updateAbout = function(){
-  const value = document.getElementById("aboutText").value;
-
-  update(ref(db,"settings"), { about: value })
-  .then(()=> alert("About Updated ✅"))
-  .catch(err=> alert("Error ❌ " + err.message));
-}
-
-
-// ✅ Update News (Text + Show)
-window.updateNews = function(){
-  const updatedData = {
+// ✅ Popup News Update
+window.updatePopupNews = function(){
+  const data = {
     news: {
       text: document.getElementById("newsText").value,
       show: document.getElementById("newsShow").value === "true"
     }
   };
 
-  update(ref(db,"settings"), updatedData)
+  update(ref(db,"settings"), data)
   .then(()=> alert("Popup News Updated ✅"))
   .catch(err=> alert("Error ❌ " + err.message));
 }
- window.updateAdminNews = function(){
-  const value = document.getElementById("adminNews").value;
-
-  update(ref(db,"settings"), { adminNews: value })
-  .then(()=> alert("Admin News Updated ✅"))
-  .catch(err=> alert("Error ❌ " + err.message));
- }
 
 
-// ✅ Delete News
-window.deleteNews = function(){
+// ✅ Delete Popup News
+window.deletePopupNews = function(){
   remove(ref(db,"settings/news"))
   .then(()=> {
-    alert("News Deleted ✅");
-    document.getElementById("newsText").value = "";
-    document.getElementById("newsShow").value = "false";
+    alert("Popup News Deleted ✅");
+    newsText.value = "";
+    newsShow.value = "false";
   })
   .catch(err=> alert("Error ❌ " + err.message));
 }
