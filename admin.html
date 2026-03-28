@@ -254,26 +254,40 @@ function loadSettings(){
 
 // ✅ Admin News Update
 window.updateAdminNews = function(){
+
   const value = document.getElementById("adminNews").value;
 
-  update(ref(db,"settings"), { adminNews: value })
-  .then(()=> alert("Admin News Updated ✅"))
-  .catch(err=> alert("Error ❌ " + err.message));
+  // पहले पूरा settings लो
+  get(ref(db,"settings")).then((snap)=>{
+    let data = snap.val() || {};
+
+    data.adminNews = value; // सिर्फ adminNews change
+
+    update(ref(db,"settings"), data)
+    .then(()=> alert("Admin News Updated ✅"))
+    .catch(err=> alert("Error ❌ " + err.message));
+  });
+
 }
 
 
 // ✅ Popup News Update
 window.updatePopupNews = function(){
-  const data = {
-    news: {
+
+  get(ref(db,"settings")).then((snap)=>{
+    let data = snap.val() || {};
+
+    // सिर्फ news update
+    data.news = {
       text: document.getElementById("newsText").value,
       show: document.getElementById("newsShow").value === "true"
-    }
-  };
+    };
 
-  update(ref(db,"settings"), data)
-  .then(()=> alert("Popup News Updated ✅"))
-  .catch(err=> alert("Error ❌ " + err.message));
+    update(ref(db,"settings"), data)
+    .then(()=> alert("Popup News Updated ✅"))
+    .catch(err=> alert("Error ❌ " + err.message));
+  });
+
 }
 
 
