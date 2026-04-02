@@ -498,6 +498,50 @@ footer{background:#020617;text-align:center;padding:25px;margin-top:40px;border-
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   border: 2px solid rgba(255,255,255,0.1);
   }
+  .timetable{
+  text-align:center;
+  padding:30px 15px;
+}
+
+.timetable h2{
+  margin-bottom:20px;
+  color:#ff9800;
+}
+
+/* BOX STYLE */
+.time-box{
+  margin:15px auto;
+  padding:20px;
+  max-width:320px;
+  border-radius:12px;
+  background:#111;
+  border:1px solid #444;
+  box-shadow:0 0 10px rgba(255,255,255,0.1);
+  transition:0.3s;
+}
+
+.time-box:hover{
+  transform:scale(1.05);
+}
+
+/* DIFFERENT COLORS */
+.bihar{
+  border-left:5px solid #00ffcc;
+}
+
+.cbse{
+  border-left:5px solid #ff5722;
+}
+
+.time-box h3{
+  margin-bottom:10px;
+}
+
+.note{
+  margin-top:20px;
+  font-size:14px;
+  color:#aaa;
+}
  </style>
 </head>
 <body>
@@ -572,6 +616,28 @@ Our teaching methodology is concept-driven, exam-oriented, and student-centric. 
 <div class="card"><h3>Affordable Fees</h3><p>Quality education at very low cost</p></div>
 <div class="card"><h3>Certificates</h3><p>Course completion certificate provided</p></div>
 </div>
+
+<!-- TIMETABLE SECTION -->
+<div class="timetable">
+
+  <h2>📅 Class Timing Schedule</h2>
+
+  <div class="time-box bihar">
+    <h3>🎓 Bihar Board</h3>
+    <p>🕕 6:00 AM – 8:30 AM</p>
+  </div>
+
+  <div class="time-box cbse">
+    <h3>🎓 CBSE Board</h3>
+    <p>🕒 3:00 PM – 6:00 PM</p>
+  </div>
+
+  <p class="note">
+    💻 All classes will be conducted in online mode.
+  </p>
+
+</div>
+
 <section class="section" id="courses">
 
 <h2 >Our Courses</h2>
